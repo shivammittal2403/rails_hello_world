@@ -15,7 +15,7 @@ namespace :deploy do
     namespace :assets do
         Rake::Task['precompile'].clear_actions
         task :precompile do
-            logger.info "Skipping asset pre-compilation because there were no asset changes"
+            puts "Skipping asset pre-compilation because there were no asset changes"
         end
     end
 end
