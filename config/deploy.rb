@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.16.0"
 
-set :application, "rails_hello_world"
+set :application, "myapp"
 set :repo_url, "git@github.com:tradecred-eng/rails_hello_world.git"
 
 set :deploy_to, "/home/ubuntu/#{fetch :application}"
