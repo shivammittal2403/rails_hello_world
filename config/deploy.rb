@@ -9,7 +9,7 @@ set :branch,        :main
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
-set :keep_releases, 5
+set :keep_releases, 1
 
 namespace :deploy do
     namespace :assets do
