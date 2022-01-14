@@ -11,7 +11,13 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 set :keep_releases, 5
 
-Rake::Task['deploy:assets:precompile'].clear_actions
+namespace :deploy do
+    namespace :assets do
+        task :precompile do
+            logger.info "Skipping asset pre-compilation because there were no asset changes"
+        end
+    end
+end
 
 
 # Default branch is :master
