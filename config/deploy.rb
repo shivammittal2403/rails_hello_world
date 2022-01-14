@@ -11,11 +11,9 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 set :keep_releases, 5
 
-namespace :deploy do
-    task 'assets:precompile' do
-        puts "no assets"
-    end
-end
+Rake::Task['deploy:assets:precompile'].clear_actions
+
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
