@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<div class="grid cols-2">
+  <div class="card">
+    <h1>Employee sign-in</h1>
+    {% if error %}<div class="alert alert-error" role="alert">{{ error }}</div>{% endif %}
+    <form method="post" action="/login" novalidate>
+      <label for="identifier">Work e-mail or username</label>
+      <input id="identifier" name="identifier" type="text" autocomplete="username"
+             required value="{{ identifier or '' }}">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <p style="margin-top:1rem"><button class="btn" type="submit">Sign in</button></p>
+    </form>
+    <p class="small">Account assistance: <a href="/password/reset">reset my password</a> ·
+       New hire? <a href="/register">Complete onboarding</a> ·
+       Invited account? <a href="/activate">Activate it here</a></p>
+  </div>
+  <div class="card">
+    <h2>Service status</h2>
+    <p class="small">Nexaline Systems internal portal. Access is monitored and logged;
+    sign-in attempts are rate-limited and temporarily locked after repeated failures.</p>
+    <p class="small">If your account was created before the 2024 directory migration,
+    use the activation link from your invitation instead of signing in.</p>
+    <p class="alert alert-info" data-dismiss>This is an authorized training environment. All accounts are synthetic.</p>
+  </div>
+</div>
+{% endblock %}
