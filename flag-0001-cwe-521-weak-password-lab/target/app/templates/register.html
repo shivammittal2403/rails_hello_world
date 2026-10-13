@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Onboarding{% endblock %}
+{% block content %}
+<div class="card" style="max-width:640px;margin:auto">
+  <h1>New employee onboarding</h1>
+  <p class="small">Submitting this form creates a <em>pending</em> identity and issues an
+  invitation token. You will choose your username and password on the activation step.</p>
+  {% if error %}<div class="alert alert-error" role="alert">{{ error }}</div>{% endif %}
+  <form method="post" action="/register">
+    <div class="grid cols-2">
+      <div><label for="given_name">Given name</label>
+        <input id="given_name" name="given_name" type="text" required autocomplete="given-name"></div>
+      <div><label for="family_name">Family name</label>
+        <input id="family_name" name="family_name" type="text" required autocomplete="family-name"></div>
+    </div>
+    <label for="email">Work e-mail</label>
+    <input id="email" name="email" type="email" required autocomplete="email" placeholder="name@nexaline.example">
+    <label for="department">Department</label>
+    <select id="department" name="department">
+      <option>Operations</option><option>Engineering</option><option>IT Operations</option>
+      <option>Security</option><option>People Ops</option><option>Finance</option><option>Procurement</option>
+    </select>
+    <p style="margin-top:1rem"><button class="btn" type="submit">Request account</button></p>
+  </form>
+</div>
+{% endblock %}

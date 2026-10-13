@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Invitation issued{% endblock %}
+{% block content %}
+<div class="card" style="max-width:640px;margin:auto">
+  <h1>Invitation issued</h1>
+  <p class="alert alert-ok">A pending identity <span class="mono">{{ username }}</span> was created.
+  In a production deployment the activation link would be sent to the work mailbox.</p>
+  <p class="alert alert-info" data-dismiss>Synthetic lab behavior: the invitation link is displayed once here.</p>
+  <p>Activation link:</p>
+  <p class="mono" id="inv-link">/activate?token={{ invitation_token }}</p>
+  <p><a class="btn" href="/activate?token={{ invitation_token }}">Continue to activation</a></p>
+</div>
+{% endblock %}

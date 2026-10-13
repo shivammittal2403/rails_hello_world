@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Account activation{% endblock %}
+{% block content %}
+<div class="card" style="max-width:680px;margin:auto">
+  <h1>Activate your invited account</h1>
+  {% if error %}<div class="alert alert-error" role="alert">{{ error }}</div>{% endif %}
+  {% if user is defined and user %}
+    <p class="small">Pending identity: {{ user.email }} ({{ user.department }})</p>
+  {% endif %}
+  <form method="post" action="/activate">
+    <label for="invitation_token">Invitation token</label>
+    <input id="invitation_token" name="invitation_token" type="text" class="mono" required value="{{ token or '' }}">
+    <label for="username">Choose your username</label>
+    <input id="username" name="username" type="text" autocomplete="username" required pattern="[a-z0-9._-]{2,40}">
+    <label for="password">Create a password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" required data-policy-advisory>
+    <p id="policy-advice" class="small" aria-live="polite"></p>
+    <h3>Current requirements ({{ policy.policy_name }})</h3>
+    <ul class="policy-list">{% for r in policy.rules %}<li>{{ r }}</li>{% endfor %}</ul>
+    <p style="margin-top:1rem"><button class="btn" type="submit">Activate account</button></p>
+  </form>
+</div>
+<script>window.NEXADESK_POLICY = {{ policy | tojson }};</script>
+{% endblock %}

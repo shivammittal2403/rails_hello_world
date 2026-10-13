@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}NexaDesk{% endblock %} · Nexaline Systems</title>
+<link rel="stylesheet" href="/static/enterprise.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="topbar" role="banner">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">◈</span>
+    <span class="brand-name">NexaDesk <em>Enterprise Identity Portal</em></span>
+  </div>
+  <nav aria-label="Primary" class="mainnav">
+    {% if nav_user %}
+      <a href="/dashboard">Dashboard</a>
+      <a href="/account">My Account</a>
+      {% if nav_is_admin %}<a href="/admin">Administration</a>{% endif %}
+      <a href="/security">Security Center</a>
+      <a href="/training">Training Range</a>
+      <span class="whoami" title="{{ nav_user.email }}">{{ nav_user.username }}</span>
+      <a class="btn btn-ghost" href="/logout">Sign out</a>
+    {% else %}
+      <a href="/login">Sign in</a>
+      <a href="/register">Employee onboarding</a>
+      <a href="/training">Training Range</a>
+    {% endif %}
+  </nav>
+</header>
+<main id="main" class="container" role="main">
+  {% block content %}{% endblock %}
+</main>
+<footer class="footer">
+  <p>Nexaline Systems internal portal v{{ '1.4.2' }} — authorized training environment. All identities and documents are synthetic.</p>
+</footer>
+<script src="/static/app.js" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
